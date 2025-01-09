@@ -10,8 +10,7 @@ This is a terminal-based home automation system developed in **Java**. It enable
 
 All interactions are performed through a terminal interface.
 
-The project demonstrates the application of six design patterns that enhance modularity, scalability, and maintainability. It is hosted on [GitHub](https://github.com/JoaoDeodatoPereira/SoftawareProject), and the complete source code is available in a downloadable zip file.
-
+The project demonstrates the application of six design patterns that enhance modularity, scalability, and maintainability. It is hosted on [GitHub](https://github.com/JoaoDeodatoPereira/SoftawareProject).
 ---
 
 ## Team Collaboration
@@ -84,4 +83,4 @@ Both team members contributed equally to ensure a balanced and comprehensive imp
 
 ## Conclusion
 
-This home automation project showcases the power of design patterns in creating a modular, scalable, and maintainable terminal-based application. By employing patterns such as Singleton, Factory, Facade, Observer, and Iterator, the project offers a flexible architecture capable of managing various devices and providing an intuitive user experience.
+We believe that we created a stable project that has the required 6 design patterns. We tried to do it as simpler and efficient as possible so that it is easy to understand and use. All you have to do is run the terminal and choose the right actions. With that being said, we are happily waiting for your feedback.
