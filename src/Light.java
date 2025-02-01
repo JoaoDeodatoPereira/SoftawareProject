@@ -1,21 +1,28 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Light implements Device {
     private final String name;
     private boolean on;
+    private final List<Observer> observers;
 
     public Light(String name) {
         this.name = name;
         this.on = false;
+        this.observers = new ArrayList<>();
     }
 
     @Override
     public void turnOn() {
         on = true;
+        notifyObservers();
         System.out.println(name + " is now On.");
     }
 
     @Override
     public void turnOff() {
         on = false;
+        notifyObservers();
         System.out.println(name + " is now Off.");
     }
 
@@ -27,5 +34,22 @@ public class Light implements Device {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void subscribe(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void unsubscribe(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(name + " is now " + (on ? "On" : "Off"));
+        }
     }
 }

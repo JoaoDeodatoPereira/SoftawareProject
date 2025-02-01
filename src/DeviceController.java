@@ -1,17 +1,29 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 public class DeviceController {
     private final List<Device> devices;
     private final List<DeviceGroup> groups;
+    private SmartHomeUser user;
 
     public DeviceController() {
         devices = new ArrayList<>();
         groups = new ArrayList<>();
     }
 
+    public void setUser(String username) {
+        this.user = new SmartHomeUser(username);
+        System.out.println("User '" + username + "' is now registered and will receive notifications.");
+    }
+
     public void addDevice() {
+        if (user == null) {
+            System.out.println("No user registered! Please set a user first.");
+            return;
+        }
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select Device Type: 1. Light, 2. Fan, 3. Air Conditioner, 4. Television, 5. Heater");
         int choice = scanner.nextInt();
@@ -24,6 +36,9 @@ public class DeviceController {
         if (factory != null) {
             Device device = factory.createDevice(name);
             devices.add(device);
+
+            device.subscribe(user);
+
             System.out.println(name + " added successfully.");
         } else {
             System.out.println("Invalid choice.");
@@ -42,11 +57,19 @@ public class DeviceController {
     }
 
     public void addGroup() {
+        if (user == null) {
+            System.out.println("No user registered! Please set a user first.");
+            return;
+        }
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter group name: ");
         String name = scanner.nextLine();
         DeviceGroup group = new DeviceGroup(name);
         groups.add(group);
+
+        group.subscribe(user);
+
         System.out.println("Group '" + name + "' created successfully.");
     }
 
@@ -161,11 +184,19 @@ public class DeviceController {
 
     public void showStatus() {
         System.out.println("Device Status:");
-        for (Device device : devices) {
+
+        Iterator<Device> deviceIterator = devices.iterator();
+        while (deviceIterator.hasNext()) {
+            Device device = deviceIterator.next();
             System.out.println(device.getName() + ": " + (device.isOn() ? "On" : "Off"));
         }
+
         for (DeviceGroup group : groups) {
             System.out.println(group.getName() + ": " + (group.isOn() ? "On" : "Off"));
+
+            for (Device device : group) {
+                System.out.println("  - " + device.getName() + ": " + (device.isOn() ? "On" : "Off"));
+            }
         }
     }
 }

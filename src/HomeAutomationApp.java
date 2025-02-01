@@ -17,6 +17,11 @@ public class HomeAutomationApp {
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter your username: ");
+        String username = scanner.nextLine();
+        deviceController.setUser(username);
+
         while (true) {
             System.out.println("1. Add Device");
             System.out.println("2. Add Group");
