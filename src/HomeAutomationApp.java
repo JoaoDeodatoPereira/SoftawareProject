@@ -19,17 +19,23 @@ public class HomeAutomationApp {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("1. Add Device");
-            System.out.println("2. Control Device");
-            System.out.println("3. Show Status");
-            System.out.println("4. Exit");
+            System.out.println("2. Add Group");
+            System.out.println("3. Add Device to Group");
+            System.out.println("4. Control Device");
+            System.out.println("5. Control Group");
+            System.out.println("6. Show Status");
+            System.out.println("7. Exit");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
 
             switch (choice) {
                 case 1 -> deviceController.addDevice();
-                case 2 -> deviceController.controlDevice();
-                case 3 -> deviceController.showStatus();
-                case 4 -> {
+                case 2 -> deviceController.addGroup();
+                case 3 -> deviceController.addDeviceToGroup();
+                case 4 -> deviceController.controlDevice();
+                case 5 -> deviceController.controlGroup();
+                case 6 -> deviceController.showStatus();
+                case 7 -> {
                     System.out.println("Exiting...");
                     return;
                 }
