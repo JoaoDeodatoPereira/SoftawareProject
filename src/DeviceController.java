@@ -20,13 +20,25 @@ public class DeviceController {
         System.out.print("Enter device name: ");
         String name = scanner.nextLine();
 
-        Device device = DeviceFactory.createDevice(choice, name);
-        if (device != null) {
+        DeviceFactory factory = getFactory(choice);
+        if (factory != null) {
+            Device device = factory.createDevice(name);
             devices.add(device);
             System.out.println(name + " added successfully.");
         } else {
             System.out.println("Invalid choice.");
         }
+    }
+
+    private DeviceFactory getFactory(int type) {
+        return switch (type) {
+            case 1 -> new LightFactory();
+            case 2 -> new FanFactory();
+            case 3 -> new AirConditionerFactory();
+            case 4 -> new TelevisionFactory();
+            case 5 -> new HeaterFactory();
+            default -> null;
+        };
     }
 
     public void addGroup() {
