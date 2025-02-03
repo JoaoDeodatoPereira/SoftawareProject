@@ -29,7 +29,7 @@ This project was a collaborative effort between two team members, each specializ
 
 ### **João Pereira**
 - **Focus:** Core application logic
-- **Design Patterns Implemented:** `Singleton`, `Factory`, `Facade`
+- **Design Patterns Implemented:** `Singleton`, `Observer`, `Iterator`,
 - **Key Contributions:**
   - `Main.java`
   - `HomeAutomationApp.java`
@@ -38,7 +38,7 @@ This project was a collaborative effort between two team members, each specializ
 
 ### **Chavdar Tsvetkov**
 - **Focus:** Interface development & concrete device classes
-- **Design Patterns Implemented:** `Observer`, `Iterator`, `Composite`
+- **Design Patterns Implemented:** `Composite`, `Factory`, `Facade`
 - **Key Contributions:**
   - `Device.java`
   - Concrete device classes (`Light.java`, `Fan.java`, `AirConditioner.java`, `Television.java`, `Heater.java`)
@@ -82,9 +82,13 @@ This project showcases **6 key design patterns** to promote modularity, scalabil
   - Shields core logic from subsystem complexities
 - **Benefit:** Maintains clean, organized code with clear separation of concerns.
 
-#### 4. **Composite Pattern**
-- **Potential Use:** Grouping devices (e.g., managing multiple lights as a single entity).
-- **Benefit:** Represents hierarchical relationships effectively.
+#### 4. Composite Pattern
+- **Implemented In:** `DeviceGroup`
+- **Purpose:** Manages groups of devices as single entities.
+- **Key Features:**
+  - Supports adding/removing devices within a group
+  - Enables turning ON/OFF multiple devices simultaneously
+- **Benefit:** Represents hierarchical relationships effectively, simplifying group management operations.
 
 ---
 
